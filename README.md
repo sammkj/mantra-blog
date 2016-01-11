@@ -10,8 +10,8 @@ This is a sample blog app written in [Mantra](https://github.com/kadirahq/mantra
 
 ### Running The App
 
-Simply start you app with `meteor -p 5005`. 
-Then you can access the app on <http://localhost:5005>
+Simply start you app with `meteor -p 3000`.
+Then you can access the app on <http://localhost:3000>
 
 ### Running Tests
 
@@ -23,5 +23,11 @@ Run tests with:
 npm test
 ```
 
-**See package.json for more information about testing setup.**
+### Tools
 
+- React
+- ReactRouter
+- react-komposer
+- react-simple-di
+
+**See package.json for more information about testing setup.**
