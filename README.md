@@ -25,9 +25,12 @@ npm test
 
 ### Tools
 
-- React
-- ReactRouter
+node_modules:
+
+- react
+- react-router
 - react-komposer
 - react-simple-di
+- react-helmet
 
 **See package.json for more information about testing setup.**

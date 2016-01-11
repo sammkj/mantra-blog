@@ -1,6 +1,6 @@
 import Navigations from '../navigations/index.jsx';
 
-const Layout = ({content = () => null }) => (
+const Layout = () => (
   <div>
     <header>
     <h1>Mantra Voice</h1>
@@ -8,7 +8,7 @@ const Layout = ({content = () => null }) => (
     </header>
 
     <div>
-    {content()}
+      {this.props.children}
     </div>
 
     <footer>

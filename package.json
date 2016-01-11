@@ -28,6 +28,7 @@
     "sinon": "1.17.x"
   },
   "dependencies": {
+    "react-helmet": "2.x.x",
     "react-komposer": "1.x.x",
     "react-simple-di": "1.x.x",
     "react": "0.14.x"

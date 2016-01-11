@@ -1,42 +1,34 @@
+import ReactDOM from 'react-dom';
+import ReactRouter from 'react-router';
 import {injectDeps} from 'react-simple-di';
-
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {ReactLayout} from 'meteor/kadira:react-layout';
 
 import MainLayout from '../components/layouts.main/index.jsx';
 import PostList from '../containers/postlist';
 import Post from '../containers/post';
 import NewPost from '../containers/newpost';
 
-
 export const initRoutes = (context, actions) => {
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);
 
-  // Move these as a module and call this from a main file
-  FlowRouter.route('/', {
-    name: 'posts.list',
-    action() {
-      ReactLayout.render(MainLayoutCtx, {
-        content: () => (<PostList />)
-      });
-    }
-  });
+  const {
+    Router,
+    Route
+  } = ReactRouter;
 
-  FlowRouter.route('/post/:postId', {
-    name: 'posts.single',
-    action({postId}) {
-      ReactLayout.render(MainLayoutCtx, {
-        content: () => (<Post postId={postId}/>)
-      });
-    }
-  });
+  const createHistory = ReactRouter.history.createHistory;
 
-  FlowRouter.route('/new-post', {
-    name: 'newpost',
-    action() {
-      ReactLayout.render(MainLayoutCtx, {
-        content: () => (<NewPost/>)
-      });
+  const routes = [
+    {
+      path: '/',
+      component: MainLayoutCtx
     }
+  ]
+
+  const router = (
+    <Router routes={routes} history={createHistory()} />
+  );
+
+  Meteor.startup(function () {
+    ReactDOM.render(router, document.getElementById("root"));
   });
 };
