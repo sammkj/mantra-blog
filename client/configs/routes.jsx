@@ -1,6 +1,7 @@
-import ReactDOM from 'react-dom';
-import ReactRouter from 'react-router';
-import {injectDeps} from 'react-simple-di';
+import React from 'react';
+import { render } from 'react-dom';
+import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+import { injectDeps } from 'react-simple-di';
 
 import MainLayout from '../components/layouts.main/index.jsx';
 import PostList from '../containers/postlist';
@@ -10,13 +11,6 @@ import NewPost from '../containers/newpost';
 export const initRoutes = (context, actions) => {
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);
 
-  const {
-    Router,
-    Route
-  } = ReactRouter;
-
-  const createHistory = ReactRouter.history.createHistory;
-
   const routes = [
     {
       path: '/',
@@ -25,10 +19,10 @@ export const initRoutes = (context, actions) => {
   ]
 
   const router = (
-    <Router routes={routes} history={createHistory()} />
+    <Router routes={routes} history={browserHistory} />
   );
 
   Meteor.startup(function () {
-    ReactDOM.render(router, document.getElementById("root"));
+    render(router, document.getElementById("root"));
   });
 };
